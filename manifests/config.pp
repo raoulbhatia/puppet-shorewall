@@ -20,7 +20,7 @@ define shorewall::config (
       augeas { "shorewall-set-ipv6-$name":
         changes => "set /files/etc/shorewall6/shorewall6.conf/$name '$value'",
         lens    => 'Shellvars.lns',
-        incl    => '/etc/shorewall/shorewall6.conf',
+        incl    => '/etc/shorewall6/shorewall6.conf',
         notify  => Service['shorewall6'],
         require => Package['shorewall6'],
       }
