@@ -6,12 +6,10 @@ define shorewall::blacklist (
     $source        = 'all',
     $address       = '',
     $dest          = '$FW',
-    $proto         = '',
+    Optional[Pattern[/^([0-9]+|tcp|udp|-)$/]]  $proto         = '',
     $port          = [],
     $order         = '50',
 ) {
-    validate_re($proto, '^([0-9]+|tcp|udp|-)$')
-
     include shorewall::defaults
 
     $blacklist_filename = $::shorewall::defaults::blacklist_filename
