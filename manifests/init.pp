@@ -367,6 +367,8 @@ class shorewall (
         value => $ip_forwarding ? { true => "Yes", false => "No", 'keep' => "Keep" },
     }
     shorewall::config {"LOG_MARTIANS":
+        # not supported in ipv6
+        ipv6  => false,
         value => $log_martians ? { true => "Yes", false => "No", 'keep' => "Keep" },
     }
     shorewall::config {"MACLIST_TTL":
